@@ -1,27 +1,24 @@
 name: ubuntu12.04-ruby2.0-nodejs0.10
-version: 0.0.2
-inherits: wercker/ubuntu12.04-ruby2.0.0@1.0.0
+version: 0.0.3
+inherits: wercker/ubuntu12.04-webessentials@1.0.4
 type: main
 platform: ubuntu@12.04
 packages:
-  - nodejs@0.10.26
+  - nodejs@6.3.1
+  - ruby@2.2.0
 keywords:
   - ruby
   - nodejs
 script: |
-  export NODEVERSION=0.10.26
+  sudo apt-add-repository ppa:brightbox/ruby-ng
+  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
   sudo apt-get update
-  sudo apt-get install wget build-essential
+  sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev wget
   sudo apt-get install graphicsmagick
-  cd $HOME
-  mkdir nodeinstall
-  cd nodeinstall
-  wget http://nodejs.org/dist/v$NODEVERSION/node-v$NODEVERSION.tar.gz
-  tar xzvf node-v$NODEVERSION.tar.gz
-  cd node-v$NODEVERSION
-  ./configure
-  make
-  sudo make install
-  cd $HOME
-  rm -fr nodeinstall
+  sudo apt-get install -y nodejs ruby2.2
+
+  ruby -v
+  gem -v
   node -v
+  npm -v
