@@ -1,5 +1,5 @@
 name: ubuntu12.04-ruby2.0-nodejs0.10
-version: 0.0.5
+version: 0.0.6
 inherits: wercker/ubuntu12.04-webessentials@1.0.4
 type: main
 platform: ubuntu@12.04
@@ -16,7 +16,7 @@ script: |
   sudo apt-get update
   sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev wget
   sudo apt-get install graphicsmagick
-  sudo apt-get install -y nodejs ruby2.2
+  sudo apt-get install -y nodejs ruby2.2 ruby2.2-dev
 
   sudo gem install bundler --no-rdoc --no-ri
 
